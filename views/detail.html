@@ -1,0 +1,30 @@
+<div id="detail-content" class="container" ng-controller="DetailCntrl as details">
+	<button ng-click="goBack()" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+	<div class="row">
+		<div class="col-md-4 col-sm-6 col-xs-12">			
+			<h2>{{currentPiece.name}}</h2>
+			<p><strong>{{currentPiece.position}}</strong><br>{{currentPiece.startYear}} 
+				<span ng-show="currentPiece.endYear!= portfolio.currentPiece.startYear">- {{currentPiece.endYear}}</span></p>
+			<p>{{currentPiece.caption}}</p>
+			<br>
+			<p>
+				<strong>Contributions</strong>
+			 	<div ng-repeat="tag in currentPiece.tags" class="">
+					{{tag}}
+				</div>
+			</p>
+		</div>
+		<div class="col-md-8 col-sm-6 col-xs-12">
+		 	<div ng-repeat="image in currentPiece.images">
+				<div class="thumbnail">
+					<img ng-src="{{image.url}}" />
+					<div class="caption">
+						{{image.caption}}
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
