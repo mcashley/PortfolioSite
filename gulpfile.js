@@ -32,14 +32,14 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src('src/scripts/**/*.js')
-    .pipe(jshint('.jshintrc'))
+  return gulp.src('src/js/**/*.js')
+    .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
@@ -51,6 +51,20 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
+// MarkUp
+gulp.task('views', function() {
+  return gulp.src('src/views/**/*.html')
+    .pipe(gulp.dest('dist/views'))
+    .pipe(notify({ message: 'Views task complete' }));
+});
+
+// Index
+gulp.task('index', function() {
+  return gulp.src('src/index.html')
+    .pipe(gulp.dest('dist'))
+    .pipe(notify({ message: 'Index task complete' }));
+});
+
 // Clean
 gulp.task('clean', function(cb) {
     del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb)
@@ -58,7 +72,7 @@ gulp.task('clean', function(cb) {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('styles', 'scripts', 'images', 'views', 'index');
 });
 
 // Watch
@@ -68,7 +82,7 @@ gulp.task('watch', function() {
   gulp.watch('src/styles/**/*.scss', ['styles']);
 
   // Watch .js files
-  gulp.watch('src/scripts/**/*.js', ['scripts']);
+  gulp.watch('src/js/**/*.js', ['scripts']);
 
   // Watch image files
   gulp.watch('src/images/**/*', ['images']);

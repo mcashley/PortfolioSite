@@ -1,0 +1,12 @@
+<div id="menu-content" class="container" ng-controller="PortfolioCntrl as portfolio">
+	<div class="row">
+	      <div ng-repeat="piece in portfolio.pieces" class="col-sm-6 col-xs-12">
+			  <button class="thumbnail" ng-click="portfolio.selectPiece($index)">
+				  <img ng-src="{{piece.thumbnail}}" class="img-rounded"/>
+					<div class="caption">
+			  	          <h4>{{piece.name}}</h4>
+		  	        </div>
+				</button>
+	      </div>
+	</div>
+</div>
