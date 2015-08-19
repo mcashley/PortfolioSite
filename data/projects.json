@@ -1,0 +1,38 @@
+[
+	{
+		name: "Example project",
+		position:"Postion title",
+		description:"Long description",
+		startYear: 2015,
+		endYear:2015,
+		company: "My Company",
+		thumbnail:"path/to/img.png",
+		images: [
+		  { 
+			  url:"path/to/img.png", 
+			  caption:'Image description'
+		  }
+		],
+		tags:[
+		    "Classification", "Category", "Group"
+		]
+	},
+	{
+		name: "Example project",
+		position:"Postion title",
+		description:"Long description",
+		startYear: 2015,
+		endYear:2015,
+		company: "My Company",
+		thumbnail:"path/to/img.png",
+		images: [
+		  { 
+			  url:"path/to/img.png", 
+			  caption:'Image description'
+		  }
+		],
+		tags:[
+		    "Classification", "Category", "Group"
+		]
+	}
+]

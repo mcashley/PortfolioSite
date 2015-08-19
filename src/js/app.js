@@ -1,4 +1,5 @@
 (function() {
+  var project	
   var app = angular.module('portfoliosite', ['ngTouch', 'ngRoute']);
   app.config(['$routeProvider', function($routeProvider) {
 	      $routeProvider
@@ -16,7 +17,9 @@
 	}]);
 
   app.controller('PortfolioCntrl', function($scope, $route, $routeParams, $location){
-    this.pieces = projects;
+	  $http.get('data/projects.json').success(function(data) {
+	      this.pieces = data;
+	    });
 	this.selectPiece = function(index){
 		$location.path( '/detail/' + index );
 	};

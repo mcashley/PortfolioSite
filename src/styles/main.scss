@@ -1,0 +1,9 @@
+button {
+	background-color:transparent;
+	border:none;
+	opacity:.65;
+}
+button:hover, button:focus, button:active {
+	outline:0;
+	opacity:1;
+}
