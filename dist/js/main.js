@@ -17,7 +17,6 @@
 
   app.controller('PortfolioCntrl', function($scope, $route, $http, $routeParams, $location){
 	  $scope.pieces = [];
-	  $scope.number = 5;
 	  $http.get('data/projects.json').then(function(response) {
 	      $scope.pieces = response.data;
 
