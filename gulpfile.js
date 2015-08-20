@@ -74,6 +74,9 @@ gulp.task('clean', function(cb) {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles', 'scripts', 'images', 'views', 'index');
 });
+gulp.task('dev', ['clean'], function() {
+    gulp.start('styles', 'scripts', 'images', 'views', 'index', 'watch');
+});
 
 // Watch
 gulp.task('watch', function() {
@@ -86,6 +89,9 @@ gulp.task('watch', function() {
 
   // Watch image files
   gulp.watch('src/images/**/*', ['images']);
+  
+  // Watch view files
+  gulp.watch('src/views/**/*', ['views']);
 
   // Create LiveReload server
   livereload.listen();

@@ -16,17 +16,30 @@
 	}]);
 
   app.controller('PortfolioCntrl', function($scope, $route, $http, $routeParams, $location){
-	  $http.get('data/projects.json').success(function(data) {
-	      this.pieces = data;
+	  $scope.pieces = [];
+	  $scope.number = 5;
+	  $http.get('data/projects.json').then(function(response) {
+	      $scope.pieces = response.data;
+
+		}, function(respponse) {
+	        console.log(response);
 	    });
-	this.selectPiece = function(index){
+	$scope.selectPiece = function(index){
 		$location.path( '/detail/' + index );
 	};
   });
-  app.controller('DetailCntrl', function($scope, $route, $routeParams, $location){
+  
+  app.controller('DetailCntrl', function($scope,$http, $route, $routeParams, $location){
 	//  document.body.scrollTop = document.documentElement.scrollTop = 0;
+	$scope.currentPiece = null;
 	if ($routeParams.id != undefined){
-	  	$scope.currentPiece = projects[$routeParams.id];	 
+  	  $http.get('data/projects.json').then(function(response) {
+  	      $scope.currentPiece = response.data[$routeParams.id];
+
+  		}, function(respponse) {
+  	        console.log(response);
+  	    });
+		//$scope.currentPiece = projects[$routeParams.id];	 
 	}
 	else {
 		$scope.goBack();
@@ -37,3 +50,4 @@
 
   });
   })();
+ 
